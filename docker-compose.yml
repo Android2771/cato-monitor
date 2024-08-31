@@ -1,0 +1,14 @@
+services:
+  cato-monitor:
+    container_name: cato-monitor
+    build:
+      context: .
+      dockerfile: Dockerfile
+      no_cache: true
+    image: cato-monitor
+    privileged: true
+    restart: unless-stopped
+    
+networks:
+  display-network:
+    driver: bridge
