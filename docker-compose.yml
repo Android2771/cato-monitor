@@ -7,7 +7,12 @@ services:
       no_cache: true
     image: cato-monitor
     privileged: true
-    restart: unless-stopped
+    restart: unless-stopped    
+    environment:
+      - PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native
+    volumes:
+      - ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native
+      - ~/.config/pulse/cookie:/root/.config/pulse/cookie
     
 networks:
   display-network:

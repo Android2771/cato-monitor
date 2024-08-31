@@ -7,7 +7,7 @@ bot = discord.Bot()
 @bot.command(name="video")
 async def video(ctx, seconds: int = 20): 
     await ctx.response.defer()
-    result = subprocess.run(['bash', "video.sh", "--video", str(seconds)], capture_output=True, text=True)
+    result = subprocess.run(['bash', "capture.sh", "--video", str(seconds)], capture_output=True, text=True)
 
     # # Print the output
     print("Output:", result.stdout)
