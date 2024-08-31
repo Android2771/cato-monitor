@@ -1,9 +1,10 @@
-# Quick webcam cat monitor
+# Webcam cat monitor
 
 ### What you need
 * Raspberry pi
 * Webcam
 * Docker
+* Discord
 
 ### Setting up
 * Create a `token.txt` file and paste in your discord token
