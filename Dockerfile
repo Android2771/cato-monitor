@@ -5,6 +5,7 @@ WORKDIR /cato-monitor
 COPY token.txt .
 COPY bot.py .
 COPY requirements.txt .
+COPY capture.sh .
 
 RUN apt update -y
 RUN apt install python3 python3-pip fswebcam ffmpeg -y

@@ -5,24 +5,9 @@ import os
 bot = discord.Bot()
 
 @bot.command(name="video")
-async def video(ctx, seconds: int = 20):     
-    command = [
-        'ffmpeg',
-        '-f', 'v4l2',
-        '-framerate', '30',
-        '-video_size', '1280x720',
-        '-c:v', 'mjpeg',
-        '-i', '/dev/video0',
-        '-f', 'pulse',
-        '-i', 'default',
-        '-t', str(seconds),
-        '-c:v', 'libx264',
-        'output.mov',
-        '-y'
-    ]
-    
+async def video(ctx, seconds: int = 20): 
     await ctx.response.defer()
-    result = subprocess.run(command, capture_output=True, text=True)
+    result = subprocess.run(['bash', "video.sh", "--video", str(seconds)], capture_output=True, text=True)
 
     # # Print the output
     print("Output:", result.stdout)
@@ -37,16 +22,8 @@ async def video(ctx, seconds: int = 20):
    
 @bot.command(name="picture")
 async def picture(ctx):     
-    command = [
-        'fswebcam',
-        '--frames', '10',
-        '-r', '1280x720',
-        '--no-banner',
-        'output.jpg'
-    ]
-    
     await ctx.response.defer()
-    result = subprocess.run(command, capture_output=True, text=True)
+    result = subprocess.run(['bash', "capture.sh", "--picture"], capture_output=True, text=True)
 
     # # Print the output
     print("Output:", result.stdout)
